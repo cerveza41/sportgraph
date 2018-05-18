@@ -2,6 +2,14 @@ from datetime import date
 from typing import List
 
 
+def transform_dates(dates: List[date]) -> List[int]:
+    lowest_date = min(dates)
+    diffs_to_lowest_date = []
+    for d in dates:
+        diffs_to_lowest_date.append((d-lowest_date).days)
+    return diffs_to_lowest_date
+
+
 def get_x_axis_values() -> List[int]:
     dates = []
     dates.append(date(2017, 12, 19))
@@ -25,12 +33,7 @@ def get_x_axis_values() -> List[int]:
     dates.append(date(2018, 5, 16))
     dates.append(date(2018, 5, 18))
 
-    lowest_date = min(dates)
-    x = []
-    for d in dates:
-        x.append((d-lowest_date).days)
-
-    return x
+    return transform_dates(dates)
 
 
 def get_y_axis_values() -> List[int]:
