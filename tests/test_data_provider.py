@@ -9,5 +9,5 @@ class TestDataProvider(unittest.TestCase):
             date(2017, 12, 19),
             date(2017, 12, 28)
         ]
-        result = data_provider.transform_dates(dates)
+        result = data_provider.calculate_days_in_between(dates)
         self.assertEqual(result, [0, 9])

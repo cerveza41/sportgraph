@@ -3,11 +3,19 @@ import os
 from trello import TrelloClient
 from typing import List, Tuple
 from datetime import date
+import re
 
 
 def to_int(s: str) -> int:
     try:
         return int(s)
+    except ValueError:
+        return 0
+
+
+def to_float(s: str) -> float:
+    try:
+        return float(s)
     except ValueError:
         return 0
 
@@ -20,6 +28,17 @@ def extract_dates(dates: List[str]) -> List[date]:
         day = to_int(d[8:10])
         result.append(date(year, month, day))
     return sorted(result)
+
+
+def extract_distance(comments: List[str]) -> List[float]:
+    pattern = re.compile('^(\d?\d),?(\d?\d?).*$')
+    result = []
+    for c in comments:
+        matches = pattern.match(c)
+        if len(matches.regs) == 3:
+            distance = '{}.{}'.format(matches.group(1), matches.group(2))
+            result.append(to_float(distance))
+    return result
 
 
 def get_comment_text(comment):
