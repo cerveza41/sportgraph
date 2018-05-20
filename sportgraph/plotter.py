@@ -12,8 +12,8 @@ def calculate_axis(x_values: List[float], y_values: List[float]) -> List[int]:
 
 
 def show_line_diagram(x_values: List[float], y_values: List[float]):
-    plt.ylabel('Strecke')
-    plt.xlabel('Tage')
+    plt.ylabel('Strecke (km)')
+    plt.xlabel('Zeit (Tage)')
     blue_line = 'b-'
     plt.plot(x_values, y_values, blue_line)
     plt.axis(calculate_axis(x_values, y_values))
