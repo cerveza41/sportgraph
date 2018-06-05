@@ -14,8 +14,8 @@ def calculate_axis(x_values: List[float], y_values: List[float]) -> List[int]:
 def show_line_diagram(x_values: List[float], y_values: List[float]):
     plt.ylabel('Strecke (km)')
     plt.xlabel('Zeit (Tage)')
-    blue_line = 'b-'
-    plt.plot(x_values, y_values, blue_line)
+    blue_line_with_dots = 'b-o'
+    plt.plot(x_values, y_values, blue_line_with_dots)
     plt.axis(calculate_axis(x_values, y_values))
     # activate grid in diagram
     plt.grid(True)
