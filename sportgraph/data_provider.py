@@ -11,9 +11,8 @@ def calculate_days_in_between(dates: List[date]) -> List[int]:
     return diffs_to_lowest_date
 
 
-def get_axis_values() -> Tuple[List[int], List[float]]:
-    dates, comments = trello.request_all_comments()
-    d = trello.extract_dates(dates)
-    distance = trello.extract_distance(comments)
-
-    return (calculate_days_in_between(d), distance)
+class DataProvider():
+    def __init__(self):
+        raw_dates, comments = trello.request_all_comments()
+        self.dates = calculate_days_in_between(trello.extract_dates(raw_dates))
+        self.distances = trello.extract_distance(comments)
