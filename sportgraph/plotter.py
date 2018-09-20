@@ -11,12 +11,14 @@ def calculate_axis(x_values: List[float], y_values: List[float]) -> List[int]:
     return [min_x, max_x, min_y, max_y]
 
 
-def show_line_diagram(x_values: List[float], y_values: List[float]):
+def show_line_diagram(days: List[float], distances: List[float], trend: List[float]):
     plt.ylabel('Strecke (km)')
     plt.xlabel('Zeit (Tage)')
     blue_line_with_dots = 'b-o'
-    plt.plot(x_values, y_values, blue_line_with_dots)
-    plt.axis(calculate_axis(x_values, y_values))
+    red_dots = ':r'
+    plt.plot(days, distances, blue_line_with_dots)
+    plt.plot(days, trend, red_dots)
+    plt.axis(calculate_axis(days, distances))
     # activate grid in diagram
     plt.grid(True)
     plt.show()

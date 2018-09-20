@@ -3,4 +3,4 @@ import sportgraph.plotter as plotter
 
 if __name__ == '__main__':
     data = DataProvider()
-    plotter.show_line_diagram(data.dates, data.distances)
+    plotter.show_line_diagram(data.dates, data.distances, data.trend)

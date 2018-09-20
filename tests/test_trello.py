@@ -26,3 +26,12 @@ class TestTrello(unittest.TestCase):
         self.assertEqual(result[1], 3)
         self.assertEqual(result[2], 2.06)
         self.assertEqual(result[3], 2)
+
+    def test_extract_breaks(self):
+        comments = ['5, 2 pausen',
+                    '3 km, 1 pause dsfsd', '3,4, keine pause', '12 2 pausen more text']
+        result = trello.extract_breaks(comments)
+        self.assertEqual(result[0], 2)
+        self.assertEqual(result[1], 1)
+        self.assertEqual(result[2], 0)
+        self.assertEqual(result[3], 2)

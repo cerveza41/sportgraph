@@ -17,7 +17,7 @@ def extract_dates(dates: List[str]) -> List[date]:
 
 
 def extract_distance(comments: List[str]) -> List[float]:
-    pattern = re.compile('^(\d?\d),?(\d?\d?).*$')
+    pattern = re.compile(r'^(\d?\d),?(\d?\d?).*$')
     result = []
     for c in comments:
         matches = pattern.match(c)
@@ -27,7 +27,20 @@ def extract_distance(comments: List[str]) -> List[float]:
     return result
 
 
-def request_all_comments() ->Tuple[List[str], List[str]]:
+def extract_breaks(comments: List[str]) -> List[int]:
+    break_pattern = re.compile(r'^.*(\d)(?=\spause).*$')
+    result = []
+    for c in comments:
+        breaks = 0
+        break_matches = break_pattern.match(c)
+        if break_matches and len(break_matches.regs) > 1:
+            breaks = '{}'.format(break_matches.group(1))
+        result.append(__to_int(breaks))
+
+    return result
+
+
+def request_all_comments() -> Tuple[List[str], List[str]]:
     key, secret, token = __get_api_keys()
     client = TrelloClient(api_key=key, api_secret=secret, token=token)
     dates = []
