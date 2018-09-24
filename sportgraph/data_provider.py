@@ -39,6 +39,21 @@ def moving_average(numbers: List[float]) -> List[float]:
     return moving_aves
 
 
+def calculate_intensity(days: List[int]) -> List[int]:
+    seven_days = 7
+    objective = 3
+    start_day = 0
+    result = []
+    while start_day <= max(days):
+        runs_in_week = [day for day in days if start_day <=
+                        day < start_day + seven_days]
+        no_of_runs = len(runs_in_week)
+        for _ in range(no_of_runs):
+            result.append(no_of_runs / objective)
+        start_day += seven_days
+    return result
+
+
 class DataProvider():
     def __init__(self):
         raw_dates, comments = trello.request_all_comments()
