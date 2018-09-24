@@ -15,9 +15,9 @@ class TestDataProvider(unittest.TestCase):
     def test_normalize_breaks(self):
         breaks = [2, 3, 0, 2, 1, 4]
         result = data_provider.normalize_breaks(breaks)
-        self.assertAlmostEqual(result[0], 0.6, places=2)
-        self.assertAlmostEqual(result[1], 0.4, places=2)
-        self.assertAlmostEqual(result[2], 1, places=2)
-        self.assertAlmostEqual(result[3], 0.6, places=2)
-        self.assertAlmostEqual(result[4], 0.8, places=2)
-        self.assertAlmostEqual(result[5], 0.2, places=2)
+        self.assertAlmostEqual(result[0], 0.4, places=2)
+        self.assertAlmostEqual(result[1], 0.6, places=2)
+        self.assertAlmostEqual(result[2], 0, places=2)
+        self.assertAlmostEqual(result[3], 0.4, places=2)
+        self.assertAlmostEqual(result[4], 0.2, places=2)
+        self.assertAlmostEqual(result[5], 0.8, places=2)

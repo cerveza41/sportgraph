@@ -13,12 +13,12 @@ def calculate_days_in_between(dates: List[date]) -> List[int]:
 
 def normalize_breaks(breaks_list: List[int]) -> List[float]:
     """ returns normalized trend based on number of breaks
-        from many_breaks to no_breaks (0..1)
+        from no_breaks to many_breaks (0..1)
     """
     max_breaks = max(breaks_list) + 1
     result = []
     for breaks in breaks_list:
-        breaks_normalized = 1 - breaks/max_breaks
+        breaks_normalized = breaks/max_breaks
         result.append(breaks_normalized)
     return result
 
