@@ -5,10 +5,7 @@ import sportgraph.trello as trello
 
 def calculate_days_in_between(dates: List[date]) -> List[int]:
     lowest_date = min(dates)
-    diffs_to_lowest_date = []
-    for d in dates:
-        diffs_to_lowest_date.append((d-lowest_date).days)
-    return diffs_to_lowest_date
+    return [(date-lowest_date).days for date in dates]
 
 
 def normalize_breaks(breaks_list: List[int]) -> List[float]:
@@ -16,11 +13,7 @@ def normalize_breaks(breaks_list: List[int]) -> List[float]:
         from no_breaks to many_breaks (0..1)
     """
     max_breaks = max(breaks_list) + 1
-    result = []
-    for breaks in breaks_list:
-        breaks_normalized = breaks/max_breaks
-        result.append(breaks_normalized)
-    return result
+    return [breaks/max_breaks for breaks in breaks_list]
 
 
 def moving_average(numbers: List[float]) -> List[float]:
